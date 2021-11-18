@@ -16,6 +16,18 @@ describe DockingStation do
 
   it { is_expected.to respond_to(:dock).with(1).argument }
 
+  it 'allows user to set the capacity' do
+    bike = Bike.new
+    station = DockingStation.new(50)
+    expect(station.capacity).to eq 50
+  end
+
+  it 'has a capacity of 20 as default' do
+    bike = Bike.new
+    station = DockingStation.new
+    expect(station.capacity).to eq 20
+  end
+
   # it { is_expected.to respond_to(:bike) }
 
   # it 'docks something' do
