@@ -1,8 +1,13 @@
-require "dockingstation"
+require 'dockingstation'
 
 describe DockingStation do
-  it { is_expected.to respond_to :release_bike } 
-  
+  it 'has an initialize method' do
+    station = DockingStation.new
+    expect(station).to be_an_instance_of(DockingStation)
+  end
+
+  it { is_expected.to respond_to :release_bike }
+
   it 'releases working bike' do
     bike = Bike.new
     subject.dock(bike)
@@ -10,31 +15,32 @@ describe DockingStation do
   end
 
   it { is_expected.to respond_to(:dock).with(1).argument }
-  
 
-  it { is_expected.to respond_to(:bike) }
-  
+  # it { is_expected.to respond_to(:bike) }
 
-  it 'docks something' do
-    bike = Bike.new
-    expect(subject.dock(bike)).to eq bike
-  end 
- 
+  # it 'docks something' do
+  #   bike = Bike.new
+  #   expect(subject.dock(bike)).to eq bike
+  # end
+
   it 'returns docked bikes' do
     bike = Bike.new
     subject.dock(bike)
-    expect(subject.bike).to eq bike
+    expect(subject).to respond_to(:bikes)
+    # expect(subject.bike).to eq bike
   end
 
-  it "does not to release bikes when there are none available" do
-    expect { subject.release_bike }.to raise_error "No bikes available"
+  it 'does not to release bikes when there are none available' do
+    expect { subject.release_bike }.to raise_error 'No bikes available'
   end
 
-  it "does not to accept more bikes than the capacity" do
-    bike1 = Bike.new
-    subject.dock(bike1)
-    bike2 = Bike.new
-    expect { subject.dock(bike2)}.to raise_error "Docking Station is full"
+  it 'does not to accept more bikes than the capacity' do
+    20.times { subject.dock(Bike.new) }
+    bike21 = Bike.new
+    expect { subject.dock(bike21) }.to raise_error 'Docking Station is full'
   end
 
+  # describe '#initialize method' do
+
+  # end
 end
