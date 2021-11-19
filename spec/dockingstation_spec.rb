@@ -52,7 +52,9 @@ describe DockingStation do
     expect { subject.dock(bike21) }.to raise_error 'Docking Station is full'
   end
 
-  # describe '#initialize method' do
-
-  # end
+  it "acknowledge a broken bike when it's docked" do
+    # station should respond to report_broken_bike
+    bike = Bike.new
+    expect(subject).to respond_to(:report_broken).with(1).argument
+  end
 end
