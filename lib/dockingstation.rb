@@ -13,6 +13,9 @@ class DockingStation
   def release_bike
     # Bike.new
     fail 'No bikes available' if empty?
+    @bikes.each  do |bike|
+      raise 'Can not release a broken bike' if bike.broken
+    end
     @bikes.pop
   end
 
@@ -24,6 +27,8 @@ class DockingStation
   def report_broken(bike)
     bike.broken?
   end
+
+
 
   private
 
