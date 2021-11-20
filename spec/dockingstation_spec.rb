@@ -41,29 +41,29 @@ describe DockingStation do
     end
   end
   
-  ### EXTRA SPEC WHICH PASSED THE TEST BUT ARE NOT IN THE WALKTHROUGH
-  # it 'has an initialize method' do
-  #   station = DockingStation.new
-  #   expect(station).to be_an_instance_of(DockingStation)
-  # end
+  ### EXTRA SPECS WHICH PASSED THE TEST BUT ARE NOT IN THE WALKTHROUGH
+  it 'has an initialize method' do
+    station = DockingStation.new
+    expect(station).to be_an_instance_of(DockingStation)
+  end
 
-  # it 'allows user to set the capacity' do
-  #   station = DockingStation.new(50)
-  #   expect(station.capacity).to eq 50
-  # end
+  it 'allows user to set the capacity' do
+    station = DockingStation.new(50)
+    expect(station.capacity).to eq 50
+  end
 
-  # it 'has a capacity of 20 as default' do
-  #   station = DockingStation.new
-  #   expect(station.capacity).to eq 20
-  # end
+  it 'has a capacity of 20 as default' do
+    station = DockingStation.new
+    expect(station.capacity).to eq 20
+  end
 
-  # it 'returns docked bikes' do
-  #   subject.dock(double(:bike))
-  #   expect(subject).to respond_to(:bikes)
-  # end
+  it 'returns docked bikes' do
+    subject.dock(double(:bike))
+    expect(subject).to respond_to(:bikes)
+  end
 
-  # it "acknowledge a broken bike when it's docked" do
-  #   expect(subject).to respond_to(:report_broken).with(1).argument
-  # end
+  it "acknowledge a broken bike when it's docked" do
+    expect(subject).to respond_to(:report_broken).with(1).argument
+  end
 
 end
